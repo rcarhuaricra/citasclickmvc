@@ -1,0 +1,106 @@
+.custom-style {
+font-size: 25px;
+color: #FF0084;
+border: 2px solid#FF0084;
+-webkitbox-shadow: inset 0px 0.1em 0.1em rgba(0,0,0,0.3);
+-moz-box-shadow: inset 0px 0.1em 0.1em rgba(0,0,0,0.3);
+box-shadow: inset 0px 0.1em 0.1em rgba(0,0,0,0.3);
+}
+.wrapper{
+    width:100%;
+    max-width: 900px;
+    margin:0 auto;	
+    padding:20px 0 20px 0;
+}
+
+.title h1{
+    color: #599e4e;
+    font-size: 20px;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.title h2{
+    font-size:14px;
+    font-weight:bold;
+    
+    height: 20px;
+    margin-top: 10px;
+    padding-left: 30px;
+    padding-top: 3px;
+}
+
+.space-right{
+    margin-right:10px;
+}
+
+.table{
+    font-size:12px;
+}
+
+#content-form{
+    display:none;
+}
+
+.inside{
+    width:100%;
+    padding:0 20px 0 20px;
+}
+
+.login{
+    width:100%;
+    max-width:310px;
+    margin:0 auto;
+    padding:10px;
+    border:1px #ccc solid;
+    border-radius:10px;
+}
+
+.form-row-signin{
+    padding:5px 0 5px 0;	
+}
+
+.login .alert{
+    padding:8px;
+}
+
+.login label{
+    color:#555;
+}
+
+.input-group-addon.primary {
+    color: rgb(255, 255, 255);
+    background-color: rgb(50, 118, 177);
+    border-color: rgb(40, 94, 142);
+}
+.input-group-addon.success {
+    color: rgb(255, 255, 255);
+    background-color: rgb(92, 184, 92);
+    border-color: rgb(76, 174, 76);
+}
+.input-group-addon.info {
+    color: rgb(255, 255, 255);
+    background-color: rgb(57, 179, 215);
+    border-color: rgb(38, 154, 188);
+}
+.input-group-addon.warning {
+    color: rgb(255, 255, 255);
+    background-color: rgb(240, 173, 78);
+    border-color: rgb(238, 162, 54);
+}
+.input-group-addon.danger {
+    color: rgb(255, 255, 255);
+    background-color: rgb(217, 83, 79);
+    border-color: rgb(212, 63, 58);
+}
+
+.modal-header, h4, .close {
+    background-color: #469c46;
+    color:white !important;
+    text-align: center;
+    font-size: 25px;
+    border-radius: 5px 5px 0px 0px;
+}
+.modal-footer {
+    background-color: #f9f9f9;
+}
