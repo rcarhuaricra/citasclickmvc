@@ -162,23 +162,35 @@ class Home extends CI_Controller {
             'TXT_DIRECCIONLOCAL' => $direccion_local
         ];
         $idcita = $this->user_model->guardarCita($insertcita);
-        if ($this->enviarCorreo($idcita) == true) {
-            ?>                       
-            <p style="text-align: center;">Estimado(a) Usuario, su Cita ha sido Reservada.</p>
-            <p style="text-align: center;">Su código de cita es: <label> "<?php echo $code; ?>" </label>
-                Verifique su Correo Electrónico.</p>
+        if ($idcita == false) {
+            ?>
+            <p style="text-align: center;">Su cita no fue almacenada.</p>
             <input type="button" class="btn btn-success" onclick="document.location.reload();" value="Aceptar">
-            <a href="<?php echo base_url() ?>home/tickepdf/<?php echo $idcita; ?>" class="btn btn-link">
-                <span class="icofont icofont-download" aria-hidden="true"></span>
-                Versión Imprimible
-            </a>
             <?php
         } else {
-            ?>
-            <p style="text-align: center;">Estimado(a) Usuario, ocurrio un error inesperado intentelo otra vez.</p>
-            <input type="button" class="btn btn-success" onclick="document.location.reload();" value="Aceptar">
-            <?php
+            if ($this->enviarCorreo($idcita) == true) {
+                ?>                       
+                <p style="text-align: center;">Estimado(a) Usuario, su Cita ha sido Reservada.</p>
+                <p style="text-align: center;">Su código de cita es: <label> "<?php echo $code; ?>" </label>
+                    Verifique su Correo Electrónico.</p>
+                <input type="button" class="btn btn-success" onclick="document.location.reload();" value="Aceptar">
+                <a href="<?php echo base_url() ?>home/tickepdf/<?php echo $idcita; ?>" class="btn btn-link">
+                    <span class="icofont icofont-download" aria-hidden="true"></span>
+                    Versión Imprimible
+                </a>
+                <?php
+            } else {
+                ?>
+                <p style="text-align: center;">Estimado(a) Usuario, ocurrio un error inesperado al enviar E-mail, porfavor descargue su ticket.</p>
+                <input type="button" class="btn btn-success" onclick="document.location.reload();" value="Aceptar">
+                <a href="<?php echo base_url() ?>home/tickepdf/<?php echo $idcita; ?>" class="btn btn-link">
+                    <span class="icofont icofont-download" aria-hidden="true"></span>
+                    Versión Imprimible
+                </a>
+                <?php
+            }
         }
+        
     }
 
     protected function enviarCorreo($idcita) {

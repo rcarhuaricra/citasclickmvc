@@ -103,7 +103,7 @@
         ?> 
     </div>
     <div id="botones" name="botones" style="text-align:center">
-        <button type="submit" id="btnReserva" name="btnReserva" class="btn btn-success" onclick="return guardar()" >   Reservar</button> 
+        <button type="submit" id="btnReserva" name="btnReserva" class="btn btn-success"  >   Reservar</button> 
         <input type="button" id="btnCancel" name="btnCancel" class="btn btn-default" onclick="document.location.reload();" value="Cancelar">
     </div>
 </div>  
@@ -115,12 +115,27 @@
             <div class="modal-header">
                 <h4 class="modal-title" id="exampleModalLabel">Reserva de Citas</h4>
             </div>
-            <div class="modal-body" id="contenidoCofirmacion">
+            <div class="modal-body text-center" id="contenidoCofirmacion">
             </div>
         </div>
     </div>
 </div>
 <script>
+    $('form#guardarCita').submit(function (e) {
+        $('#btnReserva').attr("disabled", true);
+        $('#btnReserva').html('Guardando Datos ...');
+        event.preventDefault();
+        $.ajax({
+            cache: false,
+            type: 'post',
+            url: '<?php echo base_url(); ?>home/guardar',
+            data: $('#guardarCita').serialize(),
+            success: function (response) {
+                $("#modalCofirmacion").modal({backdrop: "static", keyboard: false});
+                $("#contenidoCofirmacion").html(response);
+            }
+        });
+    });
     function clean() {
         $("#numero").val("");
         $("#TXT_NOMBRE_RAZONSOCIAL").val("");
@@ -130,21 +145,7 @@
         $("#TXT_DIRECCION").val("");
     }
 
-    function guardar() {
-        $('#guardarCita').bind('submit', function () {
 
-            $.ajax({
-                type: 'post',
-                url: '<?php echo base_url(); ?>home/guardar',
-                data: $('#guardarCita').serialize(),
-                success: function (response) {
-                    $("#modalCofirmacion").modal({backdrop: "static", keyboard: false});
-                    $("#contenidoCofirmacion").html(response);
-                }
-            });
-            event.preventDefault();
-        });
-    }
 
     function mostrarAdmin() {
         var name = $("#tipoDocumento").val();

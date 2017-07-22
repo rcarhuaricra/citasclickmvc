@@ -50,7 +50,7 @@
             </div>
         </div>
     </div>
-    <form id="guardarCita" action="<?php echo base_url(); ?>home/guardar" method = "POST">
+    <form id="guardarCita" method = "POST">
         <div class="card-block">
             <div class = "card ">
                 <div class = "card-header title">
